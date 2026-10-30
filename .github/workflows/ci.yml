@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  pipeline:
+    name: Testes e pipeline completo
+    runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: src
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Testes (dados, camada SQL, vazamento, métricas)
+        run: python -m pytest -q
+      - name: Pipeline de ponta a ponta
+        run: python -m demanda.pipeline --sem-figuras
+      - name: Resultados no resumo da execução
+        run: |
+          {
+            echo '### Resultados do backtest'
+            echo '```json'
+            cat reports/resultados.json
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  docker:
+    name: Imagem Docker
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t previsao-demanda-agro .
+      - run: docker run --rm previsao-demanda-agro python -m pytest -q
