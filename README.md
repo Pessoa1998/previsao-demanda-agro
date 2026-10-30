@@ -46,7 +46,7 @@ atrasou e quem copiou o calendário do ano anterior comprou cedo demais.
 flowchart LR
     subgraph eng["Engenharia de dados"]
         direction TB
-        A["SAP SD / MM<br/>VBAK · VBAP · KNA1<br/>MARA · MAKT · T023T · T001W"] -->|extração CSV| B["Staging<br/>stg_*"]
+        A["SAP SD / MM<br/>VBAK · VBAP · KNA1<br/>MARA · MAKT · T023T · T001W"] -->|extração CSV| B["Staging stg_*"]
         B --> C["Camada semântica SQL<br/>dimensões + fato_vendas"]
         C --> D["demanda_semanal<br/>material × filial × semana"]
         C --> E["Consumo de BI<br/>kpi_mensal · preco_material"]
@@ -57,7 +57,7 @@ flowchart LR
         G --> H["Política de estoque<br/>previsão + z × incerteza"]
         H --> I["recomendacao_estoque.csv"]
     end
-    D --> F
+    eng -->|demanda_semanal| ds
 ```
 
 ## 1. Extração SAP e camada semântica
