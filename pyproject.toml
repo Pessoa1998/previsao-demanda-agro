@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "previsao-demanda-agro"
+version = "1.0.0"
+description = "Do SAP à decisão de estoque: previsão de demanda de insumos agrícolas (dados sintéticos)"
+authors = [{ name = "Gabriel Pessoa Lima" }]
+requires-python = ">=3.11"
+dependencies = ["duckdb", "matplotlib", "numpy", "pandas", "pyarrow", "scikit-learn"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
