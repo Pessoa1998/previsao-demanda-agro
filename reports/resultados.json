@@ -1,0 +1,26 @@
+{
+  "wape_teste": {
+    "Modelo (gradient boosting)": 0.4503,
+    "Média móvel 4 semanas": 0.8544,
+    "Sazonal ingênuo (ano anterior)": 0.626
+  },
+  "wape_calibracao": {
+    "Modelo (gradient boosting)": 0.6722,
+    "Média móvel 4 semanas": 0.8541,
+    "Sazonal ingênuo (ano anterior)": 0.7699
+  },
+  "estoque_no_alvo_rs_mi": {
+    "Modelo (gradient boosting)": 44.08,
+    "Média móvel 4 semanas": 85.1,
+    "Sazonal ingênuo (ano anterior)": 64.33
+  },
+  "economia_do_modelo": {
+    "Modelo (gradient boosting)": 0.0,
+    "Média móvel 4 semanas": 0.4821,
+    "Sazonal ingênuo (ano anterior)": 0.3148
+  },
+  "atendimento_alvo": 0.95,
+  "series": 180,
+  "linhas_vbap": 75202,
+  "segundos": 85.4
+}
